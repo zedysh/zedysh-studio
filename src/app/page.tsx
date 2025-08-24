@@ -72,6 +72,29 @@ const projects = [
 
 const allTags = ["Full-stack", "Interior", "Exterior", "Three.js", "Other"];
 
+const musicLabels = [
+  {
+    title: "Universal Music Group",
+    image: "/labels/umg.png",
+  },
+  {
+    title: "Sony Music Entertainment Germany",
+    image: "/labels/sony.png",
+  },
+  {
+    title: "Def Jam Recordings",
+    image: "/labels/defjam.png",
+  },
+  {
+    title: "Interscope Records",
+    image: "/labels/interscope.png",
+  },
+  {
+    title: "Verve Records",
+    image: "/labels/verve.png",
+  },
+];
+
 import { useEffect, useState } from "react";
 // Helper function to swap letters for leet effect
 function toLeet(text: string) {
@@ -87,6 +110,7 @@ import Logo from "./components/atoms/Logo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
   const [filter, setFilter] = useState<string>("");
@@ -128,6 +152,18 @@ export default function Home() {
           <FontAwesomeIcon icon={faEnvelope} className={styles.emailIcon} />
           Email Us
         </a>
+      </section>
+
+      {/* Moving labels marquee */}
+      <section className={styles.labelsMarqueeSection}>
+        <Marquee gradient={false} style={{ background: "#fff", padding: "1.5em 0" }} speed={40}>
+          {musicLabels.map((label, idx) => (
+            <div key={label.title} className={styles.labelCard}>
+              <img src={label.image} alt={label.title} className={styles.labelImage} />
+              <small style={{ color: "#222" }}>{label.title}</small>
+            </div>
+          ))}
+        </Marquee>
       </section>
 
       {/* Projects Section */}

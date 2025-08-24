@@ -202,3 +202,32 @@
   box-shadow: none;
   margin-top: 1em;
 }
+
+// Marquee section for moving labels
+.labelsMarqueeSection {
+  width: 100vw;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.labelCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+  padding: 0 5em;
+  text-align: center;
+  text-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font-family: var(--font-primary);
+  }
+}
+
+.labelImage {
+  width: 100%;
+  max-width: 7.5em;
+}
