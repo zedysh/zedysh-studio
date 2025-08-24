@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import CursorLayout from "./components/layouts/CursorLayout/layout";
 
 export const metadata: Metadata = {
   title: "Zedysh Studio",
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CursorLayout>{children}</CursorLayout>
+      </body>
     </html>
   );
 }
