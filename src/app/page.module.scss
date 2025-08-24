@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  min-height: 100svh;
+  padding: 2em 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
