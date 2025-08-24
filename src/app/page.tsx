@@ -1,7 +1,6 @@
 "use client";
 "use client";
 import styles from "./page.module.scss";
-import Image from "next/image";
 import Header from "./components/organisms/Header";
 import Footer from "./components/organisms/Footer";
 
@@ -11,74 +10,92 @@ const projects = [
     image: "/projects/1.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.",
-    tags: ["full-stack", "three.js"],
+    tags: ["Full-stack", "Three.js"],
   },
   {
     title: "Project 2",
     image: "/projects/2.jpg",
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    tags: ["interior"],
+    tags: ["Interior"],
   },
   {
     title: "Project 3",
     image: "/projects/3.jpg",
     description:
       "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: ["exterior", "other"],
+    tags: ["Exterior", "Other"],
   },
   {
     title: "Project 4",
     image: "/projects/4.jpg",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    tags: ["full-stack"],
+    tags: ["Full-stack"],
   },
   {
     title: "Project 5",
     image: "/projects/5.jpg",
     description:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    tags: ["interior", "three.js"],
+    tags: ["Interior", "Three.js"],
   },
   {
     title: "Project 6",
     image: "/projects/6.jpg",
     description:
       "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
-    tags: ["exterior"],
+    tags: ["Exterior"],
   },
   {
     title: "Project 7",
     image: "/projects/7.jpg",
     description:
       "Suspendisse potenti. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.",
-    tags: ["other"],
+    tags: ["Other"],
   },
   {
     title: "Project 8",
     image: "/projects/8.jpg",
     description:
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
-    tags: ["full-stack", "interior"],
+    tags: ["Full-stack", "Interior"],
   },
   {
     title: "Project 9",
     image: "/projects/9.jpg",
     description:
       "Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.",
-    tags: ["three.js", "exterior"],
+    tags: ["Three.js", "Exterior"],
   },
 ];
 
-const allTags = ["full-stack", "interior", "exterior", "three.js", "other"];
+const allTags = ["Full-stack", "Interior", "Exterior", "Three.js", "Other"];
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// Helper function to swap letters for leet effect
+function toLeet(text: string) {
+  return text
+    .replace(/A/g, "4")
+    .replace(/E/g, "3")
+    .replace(/I/g, "1")
+    .replace(/O/g, "0")
+    .replace(/S/g, "5")
+    .replace(/B/g, "8");
+}
 import Logo from "./components/atoms/Logo";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const [filter, setFilter] = useState<string>("");
   const filteredProjects = filter ? projects.filter((p) => p.tags.includes(filter)) : projects;
+
+  // Hover states for typewriter titles
+  const [aboutHover, setAboutHover] = useState(false);
+  const [touchHover, setTouchHover] = useState(false);
+  const [projectsHover, setProjectsHover] = useState(false);
 
   return (
     <div className={styles.page}>
@@ -86,19 +103,46 @@ export default function Home() {
       <Header />
 
       <section className={styles.aboutUsContainer}>
-        <h1>About Us</h1>
+        <h1
+          onMouseEnter={() => setAboutHover(true)}
+          onMouseLeave={() => setAboutHover(false)}
+          className="cursor-hover-effect"
+        >
+          {aboutHover ? toLeet("ABOUT US") : "ABOUT US"}
+        </h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu
           consectetur, lorem ipsum dolor sit amet.
         </p>
       </section>
 
+      <section className={styles.getInTouchSection}>
+        <h2
+          onMouseEnter={() => setTouchHover(true)}
+          onMouseLeave={() => setTouchHover(false)}
+          className="cursor-hover-effect"
+        >
+          {touchHover ? toLeet("GET IN TOUCH") : "GET IN TOUCH"}
+        </h2>
+        <a href="mailto:hello@zedysh.com" className={styles.emailButton}>
+          <FontAwesomeIcon icon={faEnvelope} className={styles.emailIcon} />
+          Email Us
+        </a>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className={styles.section}>
-        <h2>Projects</h2>
+        <h2
+          onMouseEnter={() => setProjectsHover(true)}
+          onMouseLeave={() => setProjectsHover(false)}
+          className="cursor-hover-effect"
+        >
+          {projectsHover ? toLeet("PROJECTS") : "PROJECTS"}
+        </h2>
 
         <div className={styles.filterBar}>
           <span>Filter by tag:</span>
+
           {allTags.map((tag) => (
             <button
               key={tag}
@@ -110,13 +154,14 @@ export default function Home() {
           ))}
           <button onClick={() => setFilter("")}>All</button>
         </div>
+
         <div className={styles.projectsGrid}>
           {filteredProjects.map((project, idx) => (
             <div key={idx} className={styles.projectCard}>
               <img src={project.image} alt={project.title} className={styles.projectImage} />
 
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <h3 className={styles.projectTitle}>{project.title}</h3>
+              <p className={styles.projectDescription}>{project.description}</p>
               <div className={styles.tags}>
                 {project.tags.map((tag) => (
                   <span key={tag} className={styles.tag}>
@@ -129,31 +174,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Request Services Section */}
-      <section id="request-services" className={styles.section}>
-        <h2>Request Services</h2>
-        <form className={styles.requestForm}>
-          <label>
-            Name
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            Number (optional)
-            <input type="tel" name="number" />
-          </label>
-          <label>
-            What you got in mind
-            <textarea name="idea" rows={4} />
-          </label>
-          <button type="submit" disabled>
-            Submit
-          </button>
-        </form>
-      </section>
       <Footer />
     </div>
   );
