@@ -152,8 +152,6 @@
 }
 
 .projectDescription {
-  font-size: 0.8em;
-  line-height: 1.4;
   opacity: 0.75;
 }
 
@@ -163,6 +161,7 @@
   object-fit: cover;
   background: #222;
   display: block;
+  margin-bottom: 0.25em;
 }
 .tags {
   display: flex;

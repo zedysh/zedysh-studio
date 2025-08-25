@@ -113,7 +113,7 @@ function toLeet(text: string) {
 import Logo from "./components/atoms/Logo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Marquee from "react-fast-marquee";
 
@@ -219,7 +219,7 @@ export default function Home() {
                     className={styles.linkOut}
                     title={`Visit ${project.title}`}
                   >
-                    <FontAwesomeIcon icon={faLink} />
+                    <FontAwesomeIcon icon={faExternalLink} /> Visit
                   </a>
                 )}
               </div>
