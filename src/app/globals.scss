@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Space+Mono&display=swap");
 :root {
   --background: #000000;
   --foreground: #ffffff;
 
-  --font-primary: "Space Mono", monospace;
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Space Mono", monospace;
 }
 
 html,

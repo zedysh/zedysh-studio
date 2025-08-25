@@ -11,6 +11,7 @@ const projects = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.",
     tags: ["Full-stack", "Three.js"],
+    link: "https://project1.com",
   },
   {
     title: "Project 2",
@@ -18,6 +19,7 @@ const projects = [
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     tags: ["Interior"],
+    link: "https://project2.com",
   },
   {
     title: "Project 3",
@@ -25,6 +27,7 @@ const projects = [
     description:
       "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: ["Exterior", "Other"],
+    link: "https://project3.com",
   },
   {
     title: "Project 4",
@@ -39,6 +42,7 @@ const projects = [
     description:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     tags: ["Interior", "Three.js"],
+    link: "https://project5.com",
   },
   {
     title: "Project 6",
@@ -110,6 +114,7 @@ import Logo from "./components/atoms/Logo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
@@ -156,7 +161,7 @@ export default function Home() {
 
       {/* Moving labels marquee */}
       <section className={styles.labelsMarqueeSection}>
-        <Marquee gradient={false} style={{ background: "#fff", padding: "1.5em 0" }} speed={40}>
+        <Marquee gradient={false} style={{ background: "#fff", padding: "1.5em 0" }} speed={60}>
           {musicLabels.map((label, idx) => (
             <div key={label.title} className={styles.labelCard}>
               <img src={label.image} alt={label.title} className={styles.labelImage} />
@@ -198,12 +203,25 @@ export default function Home() {
 
               <h3 className={styles.projectTitle}>{project.title}</h3>
               <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.tags}>
-                {project.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
+              <div className={styles.tagsRow}>
+                <div className={styles.tags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.linkOut}
+                    title={`Visit ${project.title}`}
+                  >
+                    <FontAwesomeIcon icon={faLink} />
+                  </a>
+                )}
               </div>
             </div>
           ))}
