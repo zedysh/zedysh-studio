@@ -246,10 +246,12 @@
   text-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
 
-  .title {
-    font-family: var(--font-primary);
-  }
+.labelTitle {
+  width: 100%;
+  opacity: 0.75;
+  max-width: 15em;
 }
 
 .labelImage {

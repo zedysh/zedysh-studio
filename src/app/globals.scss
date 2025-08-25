@@ -1,14 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;900");
 :root {
   --background: #000000;
   --foreground: #ffffff;
 
   --font-primary: "Poppins", sans-serif;
-  --font-secondary: "Space Mono", monospace;
 }
 
 html,
 body {
+  height: 100%;
+  width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -18,6 +19,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-primary);
+  font-weight: 900;
 }
 
 body {

@@ -6,7 +6,7 @@ import Footer from "./components/organisms/Footer";
 
 const projects = [
   {
-    title: "Project 1",
+    title: "Elton John",
     image: "/projects/1.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.",
@@ -14,7 +14,7 @@ const projects = [
     link: "https://project1.com",
   },
   {
-    title: "Project 2",
+    title: "Imagine Dragons",
     image: "/projects/2.jpg",
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -99,7 +99,7 @@ const musicLabels = [
   },
 ];
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // Helper function to swap letters for leet effect
 function toLeet(text: string) {
   return text
@@ -114,7 +114,6 @@ import Logo from "./components/atoms/Logo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faExternalLink } from "@fortawesome/free-solid-svg-icons";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
@@ -161,11 +160,13 @@ export default function Home() {
 
       {/* Moving labels marquee */}
       <section className={styles.labelsMarqueeSection}>
-        <Marquee gradient={false} style={{ background: "#fff", padding: "1.5em 0" }} speed={60}>
+        <Marquee gradient={false} style={{ background: "#fff", padding: "1.5em 0" }} speed={120}>
           {musicLabels.map((label, idx) => (
             <div key={label.title} className={styles.labelCard}>
               <img src={label.image} alt={label.title} className={styles.labelImage} />
-              <small style={{ color: "#222" }}>{label.title}</small>
+              <small style={{ color: "#222" }} className={styles.labelTitle}>
+                {label.title}
+              </small>
             </div>
           ))}
         </Marquee>
