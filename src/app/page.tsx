@@ -1,48 +1,78 @@
 "use client";
-"use client";
+
 import styles from "./page.module.scss";
 import Header from "./components/organisms/Header";
 import Footer from "./components/organisms/Footer";
+import Image from "next/image";
 
-const projects = [
+type TTag =
+  | "Full-stack"
+  | "Interior"
+  | "Exterior"
+  | "Three.js"
+  | "Blender"
+  | "3D"
+  | "User Generated Content"
+  | "Front-end"
+  | "Other";
+
+// all tags should be calculated from all TTag values, not repeated in array like this here.
+const allTags: TTag[] = [
+  "Full-stack",
+  "Interior",
+  "Exterior",
+  "Three.js",
+  "Blender",
+  "3D",
+  "User Generated Content",
+  "Other",
+];
+
+const projects: {
+  title: string;
+  image: string;
+  description: string;
+  tags: TTag[];
+  link?: string;
+}[] = [
   {
-    title: "Elton John",
+    title: "Elton John's Pinball Game",
     image: "/projects/1.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.",
-    tags: ["Full-stack", "Three.js"],
-    link: "https://project1.com",
+    tags: ["Full-stack", "Three.js", "3D"],
+    link: "https://dmi.umgapps.com/eltonjohn/pinball",
   },
   {
-    title: "Imagine Dragons",
+    title: "Imagine Dragons - 'Loom' Campaign",
     image: "/projects/2.jpg",
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    tags: ["Interior"],
-    link: "https://project2.com",
+    tags: ["Full-stack", "Three.js", "3D"],
+    link: "https://enter.imaginedragonsmusic.com/",
   },
   {
-    title: "Project 3",
+    title: "Ella Fitzgerald's Room - Re-created in 3D",
     image: "/projects/3.jpg",
     description:
       "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: ["Exterior", "Other"],
-    link: "https://project3.com",
+    tags: ["Front-end", "Three.js", "3D"],
+    link: "https://dmi.umgapps.com/ellafitzgerald",
   },
   {
-    title: "Project 4",
+    title: "NMIXX - 3D Spaceship",
     image: "/projects/4.jpg",
     description:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    tags: ["Full-stack"],
+    tags: ["Full-stack", "Three.js", "3D"],
   },
   {
-    title: "Project 5",
+    title: "VCHA - 3D Fan Letters Globe",
     image: "/projects/5.jpg",
     description:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    tags: ["Interior", "Three.js"],
-    link: "https://project5.com",
+    tags: ["Full-stack", "User Generated Content"],
+    link: "https://umusic.glitch.ge/vcha/map",
   },
   {
     title: "Project 6",
@@ -74,8 +104,6 @@ const projects = [
   },
 ];
 
-const allTags = ["Full-stack", "Interior", "Exterior", "Three.js", "Other"];
-
 const musicLabels = [
   {
     title: "Universal Music Group",
@@ -99,6 +127,112 @@ const musicLabels = [
   },
 ];
 
+import StackIcon from "tech-stack-icons";
+
+const techStack = [
+  {
+    title: "React",
+    icon: <StackIcon name="react" />,
+  },
+  {
+    title: "Three.js",
+    icon: <StackIcon name="threejs" />,
+  },
+  {
+    title: "Blender",
+    icon: <img src="/icons/blender.svg" alt="Blender" />,
+  },
+  {
+    title: "Unity",
+    icon: <img src="/icons/unity.svg" alt="Unity" />,
+  },
+  {
+    title: "TypeScript",
+    icon: <StackIcon name="typescript" />,
+  },
+  {
+    title: "Next.js",
+    icon: <StackIcon name="nextjs2" />,
+  },
+  {
+    title: "Figma",
+    icon: <StackIcon name="figma" />,
+  },
+  {
+    title: "AWS",
+    icon: <StackIcon name="aws" />,
+  },
+  {
+    title: "Photoshop",
+    icon: <StackIcon name="ps" />,
+  },
+  {
+    title: "Illustrator",
+    icon: <StackIcon name="ai" />,
+  },
+  {
+    title: "Firebase",
+    icon: <StackIcon name="firebase" />,
+  },
+  {
+    title: "MongoDB",
+    icon: <StackIcon name="mongodb" />,
+  },
+
+  {
+    title: "HTML",
+    icon: <StackIcon name="html5" />,
+  },
+  {
+    title: "CSS",
+    icon: <StackIcon name="css3" />,
+  },
+  {
+    title: "SCSS",
+    icon: <StackIcon name="sass" />,
+  },
+  {
+    title: "Tailwind CSS",
+    icon: <StackIcon name="tailwindcss" />,
+  },
+  {
+    title: "Vue.js",
+    icon: <StackIcon name="vuejs" />,
+  },
+  {
+    title: "Laravel",
+    icon: <StackIcon name="laravel" />,
+  },
+  {
+    title: "Express",
+    icon: <StackIcon name="expressjs" />,
+  },
+  {
+    title: "Node.js",
+    icon: <StackIcon name="nodejs" />,
+  },
+  {
+    title: "MySQL",
+    icon: <StackIcon name="mysql" />,
+  },
+  {
+    title: "Vercel",
+    icon: <StackIcon name="vercel" />,
+  },
+  {
+    title: "Git",
+    icon: <StackIcon name="git" />,
+  },
+  {
+    title: "Jira",
+    icon: <StackIcon name="jira" />,
+  },
+  {
+    title: "Postman",
+    icon: <StackIcon name="postman" />,
+  },
+];
+
 import { useState } from "react";
 // Helper function to swap letters for leet effect
 function toLeet(text: string) {
@@ -117,7 +251,7 @@ import { faEnvelope, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
-  const [filter, setFilter] = useState<string>("");
+  const [filter, setFilter] = useState<TTag | "">("");
   const filteredProjects = filter ? projects.filter((p) => p.tags.includes(filter)) : projects;
 
   // Hover states for typewriter titles
@@ -128,6 +262,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Logo />
+
       <Header />
 
       <section className={styles.aboutUsContainer}>
@@ -198,9 +333,15 @@ export default function Home() {
         </div>
 
         <div className={styles.projectsGrid}>
-          {filteredProjects.map((project, idx) => (
-            <div key={idx} className={styles.projectCard}>
-              <img src={project.image} alt={project.title} className={styles.projectImage} />
+          {filteredProjects.map((project) => (
+            <div key={project.title} className={styles.projectCard}>
+              <Image
+                src={project.image}
+                alt={project.title}
+                className={styles.projectImage}
+                width={400}
+                height={300}
+              />
 
               <h3 className={styles.projectTitle}>{project.title}</h3>
               <p className={styles.projectDescription}>{project.description}</p>
@@ -224,6 +365,19 @@ export default function Home() {
                   </a>
                 )}
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.labelsContainer}>
+        <div className={styles.labelsGrid}>
+          {techStack.map((tech) => (
+            <div key={tech.title} className={styles.labelCard}>
+              <div className={styles.labelImage}>{tech.icon}</div>
+              <small style={{ color: "#222" }} className={styles.labelTitle}>
+                {tech.title}
+              </small>
             </div>
           ))}
         </div>

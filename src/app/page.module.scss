@@ -151,6 +151,11 @@
   min-height: 16em;
 }
 
+.projectTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .projectDescription {
   opacity: 0.75;
 }
@@ -257,4 +262,31 @@
 .labelImage {
   width: 100%;
   max-width: 7.5em;
+}
+
+.labelsContainer {
+  width: 100vw;
+  background: var(--foreground);
+}
+
+.labelsGrid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2em;
+  row-gap: 3em;
+  width: 100%;
+  max-width: 70em;
+  padding: 4em 2em;
+}
+
+.labelImage {
+  width: 100%;
+  max-width: 2.5em;
+
+  img {
+    width: 100%;
+    max-width: 2.5em;
+    height: fit-content;
+  }
 }

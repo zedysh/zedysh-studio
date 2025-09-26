@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Zedysh Studio",
   // favicon ./logo.svg
   icons: {
-    icon: "./logo2.svg",
+    icon: "./favicon.jpg",
   },
 };
 
