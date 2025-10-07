@@ -10,8 +10,8 @@
 }
 
 .cursor {
-  width: 20px;
-  height: 20px;
+  width: 2em;
+  height: 2em;
   position: fixed;
   background-color: white;
   border-radius: 50%;
@@ -37,5 +37,5 @@
 }
 
 .cursor.hoveringText {
-  transform: scale(5);
+  transform: scale(3);
 }

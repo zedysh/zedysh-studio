@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import CursorLayout from "./components/layouts/CursorLayout/layout";
 
 export const metadata: Metadata = {
   title: "Zedysh Studio",
-  // favicon ./logo.svg
   icons: {
-    icon: "./favicon.jpg",
+    icon: "./icons/favicon.jpg",
   },
 };
 
@@ -17,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <CursorLayout>{children}</CursorLayout>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

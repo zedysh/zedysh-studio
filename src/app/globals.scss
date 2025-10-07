@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;900");
 
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 :root {
   --background: #000000;
   --foreground: #ffffff;
 
   --font-primary: "Poppins", sans-serif;
+  --font-mono: "Space Mono", monospace;
 }
 
 html,
@@ -19,16 +22,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-primary);
-  font-weight: 900;
+  font-weight: bold;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-mono);
 }
 
 * {
@@ -40,12 +40,11 @@ body {
 a {
   color: inherit;
 
-  // make underline lower
   text-decoration: underline;
+  text-transform: uppercase;
   text-underline-offset: 0.25em;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.8;
   }
-  // text-decoration: none;
 }
