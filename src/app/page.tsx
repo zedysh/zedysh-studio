@@ -12,21 +12,6 @@ import Projects from "./components/organisms/Projects";
 export default function Landing() {
   return (
     <div className={style.page}>
-      <div className={style.header}>
-        <Logo />
-
-        <div className={style.headerRight}>
-          <p>
-            We make interactive 3D web experiences, web games and applications for music industry.
-          </p>
-
-          <a href="mailto:zedysh.studio@gmail.com" className={style.emailButton}>
-            <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
-            Email Us
-          </a>
-        </div>
-      </div>
-
       <section className={style.labelsMarqueeSection}>
         <Marquee
           gradient={false}
@@ -42,9 +27,33 @@ export default function Landing() {
         </Marquee>
       </section>
 
+      <div className={style.header}>
+        <Logo />
+
+        <div className={style.headerRight}>
+          <p>
+            We make interactive 3D web experiences, web games and applications for music industry.
+          </p>
+
+          <a href="mailto:zedysh.studio@gmail.com" className={style.emailButton}>
+            <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
+            Email Us
+          </a>
+        </div>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          height: "0.05em",
+          background: "var(--foreground)",
+        }}
+      />
+
       <Projects />
 
       <Footer />
+
+      <div className={style.overlay} />
     </div>
   );
 }

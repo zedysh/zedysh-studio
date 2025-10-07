@@ -12,7 +12,7 @@ export default function Projects() {
   const filteredProjects = filter ? projects.filter((p) => p.tags.includes(filter)) : projects;
 
   return (
-    <section id="projects" className={style.section}>
+    <div className={style.projects}>
       <p>Projects</p>
 
       <div className={style.filterBar}>
@@ -64,6 +64,6 @@ export default function Projects() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
