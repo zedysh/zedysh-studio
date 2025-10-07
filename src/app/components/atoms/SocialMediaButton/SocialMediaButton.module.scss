@@ -1,0 +1,14 @@
+.container {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  cursor: pointer;
+  color: var(--color-1);
+}
+
+.icon {
+  pointer-events: none;
+  height: 1.5em;
+  display: block;
+}

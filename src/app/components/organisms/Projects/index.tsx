@@ -13,7 +13,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className={style.section}>
-      <h2>Projects</h2>
+      <p>Projects</p>
 
       <div className={style.filterBar}>
         {allTags.map((tag) => (

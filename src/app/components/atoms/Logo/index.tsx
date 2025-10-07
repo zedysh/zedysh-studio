@@ -7,17 +7,15 @@ const height = width / ratio;
 
 export default function Logo() {
   return (
-    <div className={style.logoWrapper}>
-      <Image
-        src="/icons/studio-logo.svg"
-        alt="Zedysh Studio logo"
-        width={width}
-        height={height}
-        style={{
-          userSelect: "none",
-          pointerEvents: "none",
-        }}
-      />
-    </div>
+    <Image
+      src="/icons/studio-logo.svg"
+      alt="Zedysh Studio logo"
+      width={width}
+      height={height}
+      style={{
+        userSelect: "none",
+        pointerEvents: "none",
+      }}
+    />
   );
 }

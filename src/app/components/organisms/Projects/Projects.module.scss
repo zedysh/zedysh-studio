@@ -58,3 +58,23 @@
   font-size: 0.9em;
   letter-spacing: 0.03em;
 }
+
+.filterBar {
+  margin-top: 1em;
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filterBar button {
+  border: 1px solid #222;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 10em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+}
