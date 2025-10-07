@@ -28,7 +28,11 @@ export default function Landing() {
       </section>
 
       <div className={style.header}>
-        <Logo />
+        <div className={style.logoContainer}>
+          <Logo />
+
+          <p className={style.logoText}>ZEDYSH STUDIO</p>
+        </div>
 
         <div className={style.headerRight}>
           <p>
