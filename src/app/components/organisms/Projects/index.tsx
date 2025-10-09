@@ -41,6 +41,7 @@ export default function Projects() {
 
             <h3 className={style.projectTitle}>{project.title}</h3>
             <p className={style.projectDescription}>{project.description}</p>
+
             <div className={style.tagsRow}>
               <div className={style.tags}>
                 {project.tags.map((tag) => (
@@ -49,18 +50,19 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.linkOut}
-                  title={`Visit ${project.title}`}
-                >
-                  Visit <FontAwesomeIcon icon={faExternalLink} />
-                </a>
-              )}
             </div>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={style.linkOut}
+                title={`Visit ${project.title}`}
+              >
+                Visit <FontAwesomeIcon icon={faExternalLink} />
+              </a>
+            )}
           </div>
         ))}
       </div>

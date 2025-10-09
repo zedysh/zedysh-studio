@@ -8,6 +8,7 @@ import Logo from "./components/atoms/Logo";
 import Marquee from "react-fast-marquee";
 import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
+import SocialIcons from "./components/molecules/SocialIcons";
 
 export default function Landing() {
   return (
@@ -45,19 +46,22 @@ export default function Landing() {
           </a>
         </div>
       </div>
+
+      <SocialIcons />
+
       <div
         style={{
-          width: "100%",
-          height: "0.05em",
-          background: "var(--foreground)",
+          width: "100vw",
+          height: "0.025em",
+          background: "#ffffff40",
         }}
       />
 
       <Projects />
 
-      <Footer />
-
       <div className={style.overlay} />
+
+      <Footer />
     </div>
   );
 }

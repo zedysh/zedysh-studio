@@ -1,20 +1,4 @@
-.horizontallyAlignedForFooter {
+.container {
   display: flex;
-  gap: var(--gap);
-}
-
-.verticallyAlignedForLayout {
-  position: fixed;
-  right: calc(
-    (100% - var(--max-content-width)) / 2 - var(--padding-x) - var(--gap)
-  );
-
-  top: calc(var(--header-height) + var(--padding-y));
-  display: flex;
-  flex-direction: column;
   gap: 1em;
-
-  @media (max-width: 900px) {
-    display: none;
-  }
 }
