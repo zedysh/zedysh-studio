@@ -102,7 +102,7 @@ const ThreeJSCanvas = () => {
 
         // Particle material
         const material = new THREE.PointsMaterial({
-          color: 0x50c878,
+          color: 0x7f00ff,
           size: 0.01, // Increased size for better visibility
           transparent: true,
           opacity: 1,
