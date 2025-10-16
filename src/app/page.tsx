@@ -9,6 +9,7 @@ import Marquee from "react-fast-marquee";
 import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
+import ThreeJSCanvas from "./components/ThreeJSCanvas";
 
 export default function Landing() {
   return (
@@ -47,7 +48,23 @@ export default function Landing() {
         </div>
       </div>
 
-      <SocialIcons />
+      {/* <div className={style.artistsSection}>
+        <h1>Artists</h1>
+
+        <div className={style.artistsList}>
+          {artistsList.map((artist) => (
+            <span key={artist} className={style.artistName}>
+              {artist}
+            </span>
+          ))}
+        </div>
+      </div> */}
+
+      <ThreeJSCanvas />
+
+      <div className={style.socials}>
+        <SocialIcons />
+      </div>
 
       <div
         style={{

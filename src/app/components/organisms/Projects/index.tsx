@@ -13,7 +13,7 @@ export default function Projects() {
 
   return (
     <div className={style.projects}>
-      <p>Projects</p>
+      <h1>Projects</h1>
 
       <div className={style.filterBar}>
         {allTags.map((tag) => (
@@ -38,6 +38,8 @@ export default function Projects() {
               width={400}
               height={300}
             />
+
+            <img src="/images/studio-logo.svg" alt="Studio Logo" className={style.studioLogo} />
 
             <h3 className={style.projectTitle}>{project.title}</h3>
             <p className={style.projectDescription}>{project.description}</p>

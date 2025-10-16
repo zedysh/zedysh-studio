@@ -4,7 +4,7 @@ import "./globals.scss";
 export const metadata: Metadata = {
   title: "Zedysh Studio",
   icons: {
-    icon: "/icons/studio-logo.svg",
+    icon: "/icons/z-logo.svg",
   },
 };
 
