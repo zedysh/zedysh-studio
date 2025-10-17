@@ -124,9 +124,9 @@ const ThreeJSCanvas = () => {
         window.addEventListener("mousemove", handleMouseMove);
 
         // Hover effect parameters
-        const hoverRadius = 1.5;
-        const repulsionStrength = 0.3;
-        const returnSpeed = 0.05;
+        const hoverRadius = 2;
+        const repulsionStrength = 0.25;
+        const returnSpeed = 0.1;
 
         // Animation loop
         const animate = () => {
