@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @font-face {
-  font-family: "Gunsan";
-  src: url("/fonts/Gunsan.woff2") format("woff2"), url("/fonts/Gunsan.woff") format("woff"),
-    url("/fonts/Gunsan.ttf") format("truetype");
+  font-family: "SharpSans-Extrabold";
+  src: url("/fonts/SharpSans-Extrabold.woff2") format("woff2"),
+    url("/fonts/SharpSans-Extrabold.woff") format("woff"),
+    url("/fonts/SharpSans-Extrabold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -15,7 +16,7 @@
   --violet: #7f00ff;
 
   --font-mono: "Space Mono", monospace;
-  --font-title: "Gunsan";
+  --font-title: "SharpSans-Extrabold";
 }
 
 html,
@@ -48,6 +49,7 @@ a {
 
 h1 {
   font-family: var(--font-title);
+  text-transform: uppercase;
 }
 
 li {

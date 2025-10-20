@@ -41,7 +41,7 @@ const ThreeJSCanvas = () => {
 
     // Load GLB model and create particle system
     const loader = new GLTFLoader();
-    const particleCount = 50000;
+    const particleCount = 40000;
     let mouseCleanup: (() => void) | null = null;
 
     loader.load(
@@ -103,7 +103,7 @@ const ThreeJSCanvas = () => {
         // Particle material
         const material = new THREE.PointsMaterial({
           color: 0x7f00ff,
-          size: 0.01, // Increased size for better visibility
+          size: 0.0125, // Increased size for better visibility
           transparent: true,
           opacity: 1,
         });

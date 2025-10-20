@@ -33,7 +33,7 @@ export default function Landing() {
         <div className={style.logoContainer}>
           <Logo />
 
-          <p className={style.logoText}>ZEDYSH STUDIO</p>
+          <h1 className={style.logoText}>ZEDYSH STUDIO</h1>
         </div>
 
         <div className={style.headerRight}>
@@ -41,24 +41,15 @@ export default function Landing() {
             We make interactive 3D web experiences, web games and applications for music industry.
           </p>
 
-          <a href="mailto:zedysh.studio@gmail.com" className={style.emailButton}>
+          <a
+            href="mailto:zedysh.studio@gmail.com"
+            className={`${style.emailButton} cursor-hover-effect`}
+          >
             <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
             Email Us
           </a>
         </div>
       </div>
-
-      {/* <div className={style.artistsSection}>
-        <h1>Artists</h1>
-
-        <div className={style.artistsList}>
-          {artistsList.map((artist) => (
-            <span key={artist} className={style.artistName}>
-              {artist}
-            </span>
-          ))}
-        </div>
-      </div> */}
 
       <ThreeJSCanvas />
 

@@ -16,7 +16,7 @@ export const projects: {
     link: "https://dmi.umgapps.com/eltonjohn/pinball",
   },
   {
-    title: "Imagine Dragons - 'Loom' Campaign",
+    title: "Imagine Dragons 'Loom' Campaign",
     image: "/projects/2.jpg",
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -24,7 +24,7 @@ export const projects: {
     link: "https://enter.imaginedragonsmusic.com/",
   },
   {
-    title: "Ella Fitzgerald's Room - Re-created in 3D",
+    title: "Ella Fitzgerald's Room Re-created in 3D",
     image: "/projects/3.jpg",
     description:
       "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",

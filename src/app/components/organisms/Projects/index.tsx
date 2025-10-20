@@ -20,7 +20,7 @@ export default function Projects() {
           {allTags.map((tag) => (
             <button
               key={tag}
-              className={filter === tag ? style.activeFilter : ""}
+              className={`${filter === tag ? style.activeFilter : ""} cursor-hover-effect`}
               onClick={() => setFilter(tag)}
             >
               {tag}
@@ -66,7 +66,7 @@ export default function Projects() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={style.linkOut}
+                    className={`${style.linkOut} cursor-hover-effect`}
                     title={`Visit ${project.title}`}
                   >
                     Visit <FontAwesomeIcon icon={faExternalLink} />
