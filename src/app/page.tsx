@@ -10,6 +10,7 @@ import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
 import ThreeJSCanvas from "./components/ThreeJSCanvas";
+import Image from "next/image";
 
 export default function Landing() {
   return (
@@ -37,9 +38,9 @@ export default function Landing() {
         </div>
 
         <div className={style.headerRight}>
-          <p>
-            We make interactive 3D web experiences, web games and applications for music industry.
-          </p>
+          <h3>Digital Studio | Music Fan Engagement & Audience Development</h3>
+
+          <p>Worked for 30+ of artists across major & independent labels</p>
 
           <a
             href="mailto:zedysh.studio@gmail.com"
@@ -67,7 +68,13 @@ export default function Landing() {
 
       <Projects />
 
-      <div className={style.overlay} />
+      <Image
+        src="/overlay.jpg"
+        alt="Overlay"
+        layout="fill"
+        objectFit="cover"
+        className={style.overlayImage}
+      />
 
       <Footer />
     </div>
