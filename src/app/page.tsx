@@ -10,10 +10,18 @@ import SocialIcons from "./components/molecules/SocialIcons";
 import ThreeJSCanvas from "./components/ThreeJSCanvas";
 import Image from "next/image";
 import LabelsMarquee from "./components/molecules/LabelsMarquee";
+import { useEffect } from "react";
+import { animateLogo } from "./lib/animateLogo";
 
 export default function Landing() {
+  useEffect(() => {
+    animateLogo();
+  }, []);
+
   return (
     <div className={style.page}>
+      <canvas id="threejs" className={style.threejsCanvas} />
+
       <LabelsMarquee />
 
       <div className={style.header}>
@@ -38,29 +46,29 @@ export default function Landing() {
         </div>
       </div>
 
-      <ThreeJSCanvas />
-
+      {/* <ThreeJSCanvas /> */}
+      {/* 
       <div className={style.socials}>
         <SocialIcons />
-      </div>
+      </div> */}
 
-      <div
+      {/* <div
         style={{
           width: "100vw",
           height: "0.025em",
           background: "#ffffff40",
         }}
-      />
+      /> */}
 
       <Projects />
 
-      <Image
+      {/* <Image
         src="/overlay.jpg"
         alt="Overlay"
         layout="fill"
         objectFit="cover"
         className={style.overlayImage}
-      />
+      /> */}
 
       <Footer />
     </div>

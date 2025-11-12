@@ -7,6 +7,7 @@ import { useState } from "react";
 import { TTag } from "@/app/lib/types";
 import { projects } from "@/app/lib/projects";
 import LabelsMarquee from "../../molecules/LabelsMarquee";
+import SocialIcons from "../../molecules/SocialIcons";
 
 export default function Projects() {
   const [filter, setFilter] = useState<TTag | "">("");
@@ -15,19 +16,25 @@ export default function Projects() {
   return (
     <div className={style.projects}>
       <div className={style.header}>
-        <h1>Projects</h1>
+        <div className={style.titleAndFilters}>
+          <h1>Projects</h1>
 
-        <div className={style.filterBar}>
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              className={`${filter === tag ? style.activeFilter : ""} cursor-hover-effect`}
-              onClick={() => setFilter(tag)}
-            >
-              {tag}
-            </button>
-          ))}
-          <button onClick={() => setFilter("")}>All</button>
+          <div className={style.filterBar}>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                className={`${filter === tag ? style.activeFilter : ""} cursor-hover-effect`}
+                onClick={() => setFilter(tag)}
+              >
+                {tag}
+              </button>
+            ))}
+            <button onClick={() => setFilter("")}>All</button>
+          </div>
+        </div>
+
+        <div className={style.socials}>
+          <SocialIcons />
         </div>
       </div>
 
