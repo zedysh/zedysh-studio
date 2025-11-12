@@ -21,6 +21,12 @@
   }
 }
 
+.navbar {
+  height: 5em;
+  background-color: var(--foreground);
+  width: 100%;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -28,7 +34,6 @@
   gap: 2em;
   min-height: 100svh;
   width: 100%;
-  // max-width: 60em;
   margin: auto;
 }
 
@@ -47,72 +52,8 @@
   color: #222;
 }
 
-.requestForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2em;
-  width: 100%;
-  max-width: 24em;
-  margin: 0 auto;
-  background: none;
-  box-shadow: none;
-}
-
-.labelsMarqueeSection {
-  width: 100vw;
-  background: var(--foreground);
-  padding: 0;
-  margin: 0;
-}
-
-.labelCard {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  width: 100%;
-  padding: 0 5em;
-  text-align: center;
-  text-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.labelTitle {
-  width: 100%;
-  opacity: 0.75;
-  max-width: 12em;
-  color: var(--background);
-}
-
-.labelImage {
-  width: 100%;
-  min-width: 7.5em;
-}
-
-.labelsContainer {
-  width: 100vw;
-  background: var(--foreground);
-  color: var(--background);
-}
-
-.labelsGrid {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 2em;
-  row-gap: 3em;
-  width: 100%;
-  max-width: 70em;
-  padding: 4em 2em;
-}
-
-.labelImage {
-  width: 100%;
-  max-width: 3em;
-}
-
 .header {
-  margin-top: 5em;
+  margin-top: 3em;
   margin-bottom: 3em;
   display: flex;
   gap: 1em;

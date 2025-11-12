@@ -6,6 +6,7 @@ import { allTags } from "@/app/lib/tags";
 import { useState } from "react";
 import { TTag } from "@/app/lib/types";
 import { projects } from "@/app/lib/projects";
+import LabelsMarquee from "../../molecules/LabelsMarquee";
 
 export default function Projects() {
   const [filter, setFilter] = useState<TTag | "">("");
@@ -29,6 +30,8 @@ export default function Projects() {
           <button onClick={() => setFilter("")}>All</button>
         </div>
       </div>
+
+      <LabelsMarquee />
 
       <div className={style.projectsGrid}>
         {filteredProjects.map((project) => (
