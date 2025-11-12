@@ -9,11 +9,12 @@ import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
 import ThreeJSCanvas from "./components/ThreeJSCanvas";
 import Image from "next/image";
+import LabelsMarquee from "./components/molecules/LabelsMarquee";
 
 export default function Landing() {
   return (
     <div className={style.page}>
-      <div className={style.navbar}></div>
+      <LabelsMarquee />
 
       <div className={style.header}>
         <div className={style.logoContainer}>

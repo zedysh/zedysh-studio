@@ -12,8 +12,8 @@ export default function LabelsMarquee() {
             src={label.image}
             alt={label.title}
             className={style.image}
-            height={125}
-            width={125}
+            height={100}
+            width={100}
           />
         </div>
       ))}

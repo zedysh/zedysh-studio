@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 0.5em;
   width: 100%;
-  padding: 0 7em;
+  padding: 0 9em;
   text-align: center;
   text-wrap: wrap;
   align-items: center;
@@ -17,4 +17,6 @@
 
 .image {
   width: 100%;
+  user-select: none;
+  pointer-events: none;
 }

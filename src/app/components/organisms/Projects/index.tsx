@@ -31,8 +31,6 @@ export default function Projects() {
         </div>
       </div>
 
-      <LabelsMarquee />
-
       <div className={style.projectsGrid}>
         {filteredProjects.map((project) => (
           <div key={project.title} className={style.projectCard}>
