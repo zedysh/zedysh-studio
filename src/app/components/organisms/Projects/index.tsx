@@ -32,22 +32,20 @@ export default function Projects() {
             <button onClick={() => setFilter("")}>All</button>
           </div>
         </div>
-
-        <div className={style.socials}>
-          <SocialIcons />
-        </div>
       </div>
 
       <div className={style.projectsGrid}>
         {filteredProjects.map((project) => (
           <div key={project.title} className={style.projectCard}>
-            <Image
+            {/* <Image
               src={project.image}
               alt={project.title}
               className={style.projectImage}
               width={400}
               height={300}
-            />
+            /> */}
+            <video src="/orelsan.mp4" className={style.projectImage} autoPlay loop muted />
+
             <div className={style.shadowGradient} />
 
             <div className={style.content}>

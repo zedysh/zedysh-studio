@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Logo 3D Animation
+
+The landing page (`src/app/page.tsx`) initializes a Three.js scene via `animateLogo()` (see `src/app/lib/animateLogo.ts`).
+
+Place your animated GLB file at `public/logo3.glb` (update the path in `animateLogo.ts` if you use a different filename). The animation time is scrubbed by page scroll progress and the logo reacts to mouse movement with a gentle eased rotation. The logo resizes responsively on window resize to occupy ~80% of the viewport height.
+
+To adjust behavior:
+
+- Scroll → affects animation time (mapped across the total scrollable document height).
+- Mouse move → rotates the logo (`rotationLerp` and multiplier constants near the animate loop).
+- Resize scaling fraction: tweak `const f = 0.8` inside `updateLogoScale()`.
+- Material: currently uses a MatCap (`/matcap7.jpg`). Replace with your own or assign an envMap if desired.
+
+Cleanup is automatic on component unmount (event listeners & WebGL resources disposed).

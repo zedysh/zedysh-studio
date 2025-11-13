@@ -41,10 +41,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
-  min-height: 100svh;
   width: 100%;
-  margin: auto;
+}
+
+.headerTitle {
+  font-family: var(--font-secondary);
+  font-size: 3em;
+  letter-spacing: 0.025em;
+}
+
+.logoText {
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-weight: regular;
+  font-size: 1.5em;
 }
 
 .section {
@@ -62,28 +72,41 @@
   color: #222;
 }
 
-.header {
-  display: flex;
-  gap: 1em;
-  justify-content: space-between;
-  min-height: calc(100svh - 15em);
-}
-
-.header,
-.socials {
-  width: 100%;
-  padding: 0 1em;
-  max-width: 70em;
-}
-
-.headerRight {
-  text-align: right;
+.content {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 1em;
   justify-content: space-between;
+  min-height: 100svh;
+  padding: 2em 0;
   width: 100%;
-  max-width: 25em;
+}
+
+.header {
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 2em;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.footer,
+.headerContent {
+  padding: 0 2em;
 }
 
 .overlayImage {
@@ -93,18 +116,7 @@
   width: 100vw;
   height: 100svh;
   pointer-events: none;
-  // background: url("/overlay.jpg");
-  // background-size: cover;
-  // background-position: center;
   z-index: -2;
-}
-
-.logoText {
-  font-size: 2.4em;
-  text-transform: uppercase;
-  letter-spacing: 0em;
-  color: var(--foreground);
-  line-height: 0.5em;
 }
 
 .logoContainer {
@@ -116,8 +128,7 @@
 
 .socials {
   display: flex;
-  justify-content: center;
-  font-size: 1.2em;
+  justify-content: space-between;
 }
 
 .artistsSection {

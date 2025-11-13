@@ -7,68 +7,48 @@ import Logo from "./components/atoms/Logo";
 import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
-import ThreeJSCanvas from "./components/ThreeJSCanvas";
-import Image from "next/image";
 import LabelsMarquee from "./components/molecules/LabelsMarquee";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
 
 export default function Landing() {
   useEffect(() => {
-    animateLogo();
+    const dispose = animateLogo();
+    return () => {
+      if (typeof dispose === "function") dispose();
+    };
   }, []);
 
   return (
     <div className={style.page}>
       <canvas id="threejs" className={style.threejsCanvas} />
 
-      <LabelsMarquee />
-
-      <div className={style.header}>
-        <div className={style.logoContainer}>
+      <div id="landing-content" className={style.content}>
+        <div className={style.headerContent}>
           <Logo />
 
-          <h1 className={style.logoText}>ZEDYSH STUDIO</h1>
-        </div>
-
-        <div className={style.headerRight}>
-          <h3>Digital Studio | Music Fan Engagement & Audience Development</h3>
-
-          <p>Worked for 30+ of artists across major & independent labels</p>
-
-          <a
-            href="mailto:zedysh.studio@gmail.com"
-            className={`${style.emailButton} cursor-hover-effect`}
-          >
+          <a href="mailto:studio@zedysh.com" className={`${style.emailButton} cursor-hover-effect`}>
             <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
             Email Us
           </a>
         </div>
+
+        <div className={style.footer}>
+          {/* <small>
+            Music Fan Engagement
+            <br />
+            & Audience Development
+            <br />
+            Digital Studio
+          </small>` */}
+          <p className={style.logoText}>Zedysh Studio</p>
+          <SocialIcons />
+        </div>
       </div>
 
-      {/* <ThreeJSCanvas /> */}
-      {/* 
-      <div className={style.socials}>
-        <SocialIcons />
-      </div> */}
-
-      {/* <div
-        style={{
-          width: "100vw",
-          height: "0.025em",
-          background: "#ffffff40",
-        }}
-      /> */}
+      <LabelsMarquee />
 
       <Projects />
-
-      {/* <Image
-        src="/overlay.jpg"
-        alt="Overlay"
-        layout="fill"
-        objectFit="cover"
-        className={style.overlayImage}
-      /> */}
 
       <Footer />
     </div>
