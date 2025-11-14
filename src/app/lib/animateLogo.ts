@@ -18,7 +18,7 @@ export function animateLogo() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
 
-  const bloomParams = { strength: 2, radius: 0.6, threshold: 0.9 };
+  const bloomParams = { strength: 2, radius: 0.6, threshold: 0.75 };
   const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
     bloomParams.strength,
@@ -46,14 +46,10 @@ export function animateLogo() {
   // State containers
   const loader = new GLTFLoader();
   let logoGroup: THREE.Group | null = null;
+  let gltf: THREE.Object3D | null;
   let box3: THREE.Box3 | null = null;
   let logoSize: THREE.Vector3 | null = null;
   const mousePosition = new THREE.Vector2();
-  const clock = new THREE.Clock();
-  // Damped scroll progress state (previous/current)
-  const scrollProgress = { previous: 0, current: 0 };
-  // Total scrollable height helper (updated on resize)
-  let totalScrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
 
   const handleMouseMove = (e: MouseEvent) => {
     mousePosition.set(
@@ -66,6 +62,7 @@ export function animateLogo() {
   const baseRotationY = -Math.PI / 2;
 
   const baseScale = 0.75; // requested base scale
+
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
     const f = 0.8; // fraction of viewport height occupied before applying baseScale
@@ -77,10 +74,16 @@ export function animateLogo() {
     logoGroup.position.multiplyScalar(-logoGroup.scale.x);
   };
 
+  const scrollProgress: { previous: number; current: number } = {
+    previous: 0,
+    current: 0,
+  };
+
   loader.load(
     "/logo3.glb",
     (gltf) => {
       logoGroup = gltf.scene;
+      gltf = gltf;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
       logoGroup.traverse((obj) => {
         if ((obj as THREE.Mesh).isMesh) {
@@ -88,7 +91,6 @@ export function animateLogo() {
         }
       });
 
-      // Animation
       // const animations = gltf.animations;
       // if (animations && animations.length) {
       //   const mixer = new THREE.AnimationMixer(logoGroup);
@@ -117,15 +119,42 @@ export function animateLogo() {
       scene.add(logoGroup);
     },
     undefined,
-    (err) => console.error("Failed to load /logo3.glb", err)
+    (err) => console.error("Failed to load /logo4.glb", err)
   );
 
   // Scroll-controlled animation (damped; normalized to total scrollable height)
   let frameId: number;
   const rotationLerp = 0.1;
+
+  // const mixer = new THREE.AnimationMixer(gltf.scene);
+
   window.addEventListener("mousemove", handleMouseMove);
 
+  function update(scrollProgress: number, deltaTime: number) {
+    /** multiply progress to duration of first animation because duration of all animations are same */
+    // mixer.setTime(scrollProgress * gltf.animations[0].duration);
+  }
+
+  // three clock
+  const clock = new THREE.Clock();
+  // delta
+  const delta = clock.getDelta();
+
+  // mixer.setTime(scrollProgress.current * gltf.animations[0].duration);
+
+  update(Math.min(0.99, Math.max(0, scrollProgress.current)), delta);
+
   const animate = () => {
+    const delta = clock.getDelta();
+
+    scrollProgress.previous = scrollProgress.current;
+    scrollProgress.current = THREE.MathUtils.damp(
+      scrollProgress.previous,
+      window.scrollY / window.innerHeight,
+      6,
+      delta
+    );
+
     frameId = requestAnimationFrame(animate);
 
     if (logoGroup) {
@@ -145,7 +174,6 @@ export function animateLogo() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
     updateLogoScale();
-    totalScrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   };
   window.addEventListener("resize", handleResize);
 
