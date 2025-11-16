@@ -47,6 +47,8 @@ export function animateLogo() {
   let box3: THREE.Box3 | null = null;
   let logoSize: THREE.Vector3 | null = null;
   const mousePosition = new THREE.Vector2();
+  let mixer: THREE.AnimationMixer;
+  let animLength = 0;
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
@@ -63,7 +65,6 @@ export function animateLogo() {
     "/logo.glb",
     (gltf) => {
       logoGroup = gltf.scene;
-      gltf = gltf;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
       logoGroup.traverse((obj) => {
         if ((obj as THREE.Mesh).isMesh) {
@@ -73,25 +74,12 @@ export function animateLogo() {
 
       const animations = gltf.animations;
       if (animations && animations.length) {
-        const mixer = new THREE.AnimationMixer(logoGroup);
+        mixer = new THREE.AnimationMixer(logoGroup);
+        animLength = animations[0].duration
         animations.forEach((clip) => {
           const action = mixer.clipAction(clip);
           action.play();
         });
-
-        // Update the mixer on each frame
-        const updateAnimationTime = () => {
-          let pct = document.body.scrollTop / window.innerHeight;
-          pct = MathUtils.clamp(pct * 1.5, 0, 1);
-
-          const prev = mixer.time;
-          const next = pct * animations[0].duration;
-          const time = THREE.MathUtils.damp(prev, next, 100, clock.getDelta());
-          mixer.setTime(time);
-
-          requestAnimationFrame(updateAnimationTime);
-        };
-        updateAnimationTime();
       }
 
       box3 = new THREE.Box3().setFromObject(logoGroup);
@@ -108,8 +96,15 @@ export function animateLogo() {
   );
 
   const animate = () => {
-    const delta = clock.getDelta();
-    frameId = requestAnimationFrame(animate);
+
+    if (mixer) {
+      let pct = document.body.scrollTop / window.innerHeight;
+      pct = MathUtils.clamp(pct * 1.5, 0, 1);
+      const prev = mixer.time;
+      const next = pct * animLength;
+      const time = THREE.MathUtils.damp(prev, next, 10, clock.getDelta());
+      mixer.setTime(time);
+    }
 
     if (logoGroup) {
       const targetRotX = -mousePosition.y * 0.3; // baseline X = 0
@@ -118,6 +113,8 @@ export function animateLogo() {
       logoGroup.rotation.y = THREE.MathUtils.lerp(logoGroup.rotation.y, targetRotY, rotationLerp);
     }
     composer.render();
+
+    frameId = requestAnimationFrame(animate);
   };
 
   animate();
