@@ -2,9 +2,8 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 
-export function animateLogo() {
+export default function animateLogo() {
   const canvas = document.getElementById("threejs") as HTMLCanvasElement | null;
   if (!canvas) return;
 
@@ -18,14 +17,6 @@ export function animateLogo() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
 
-  const bloomParams = { strength: 2, radius: 0.6, threshold: 0.75 };
-  const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    bloomParams.strength,
-    bloomParams.radius,
-    bloomParams.threshold
-  );
-
   const scene = new THREE.Scene();
   scene.background = null;
 
@@ -35,12 +26,11 @@ export function animateLogo() {
 
   const renderPass = new RenderPass(scene, camera);
   composer.addPass(renderPass);
-  composer.addPass(bloomPass);
   composer.setSize(window.innerWidth, window.innerHeight);
 
   // Assets
   const texLoader = new THREE.TextureLoader();
-  const matcap = texLoader.load("/matcap7.jpg");
+  const matcap = texLoader.load("/matcap.jpg");
   matcap.colorSpace = THREE.SRGBColorSpace;
 
   // State containers
@@ -61,7 +51,7 @@ export function animateLogo() {
   // Baseline rotation (requested): start turned 90deg around Y
   const baseRotationY = -Math.PI / 2;
 
-  const baseScale = 0.75; // requested base scale
+  const baseScale = 0.7; // requested base scale
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
@@ -80,7 +70,7 @@ export function animateLogo() {
   };
 
   loader.load(
-    "/logo3.glb",
+    "/logo.glb",
     (gltf) => {
       logoGroup = gltf.scene;
       gltf = gltf;

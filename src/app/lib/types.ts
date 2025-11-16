@@ -22,7 +22,8 @@ export type TSocialIcon =
   | "tiktok"
   | "amazonMusic"
   | "twitch"
-  | "discord";
+  | "discord"
+  | "email";
 
 export interface ISocialLinks {
   type: TSocialIcon;

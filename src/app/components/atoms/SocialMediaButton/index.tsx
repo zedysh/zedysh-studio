@@ -19,7 +19,7 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./SocialMediaButton.module.scss";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
 import { TSocialIcon } from "../../../lib/types";
 import classNames from "classnames";
 
@@ -63,6 +63,8 @@ const SocialLinkButton = ({ type, className = "", iconClassName = "", link }: Pr
         return faAmazon;
       case "spotify":
         return faSpotify;
+      case "email":
+        return faEnvelope;
       default:
         return faLink;
     }

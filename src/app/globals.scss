@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://use.typekit.net/vjh1djx.css");
-
 @font-face {
-  font-family: "SharpSans-Extrabold";
-  src: url("/fonts/SharpSans-Extrabold.woff2") format("woff2"),
-    url("/fonts/SharpSans-Extrabold.woff") format("woff"),
-    url("/fonts/SharpSans-Extrabold.ttf") format("truetype");
-  font-weight: normal;
+  font-family: "Interstate Black Comp";
+  src: url("/fonts/Interstate-BlackComp.woff2") format("woff2"),
+    url("/fonts/Interstate-BlackComp.woff") format("woff"),
+    url("/fonts/Interstate-BlackComp.ttf") format("truetype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -17,8 +14,7 @@
   --violet: #7f00ff;
 
   --font-mono: "Space Mono", monospace;
-  --font-secondary: "abolition", sans-serif;
-  --font-title: "SharpSans-Extrabold";
+  --font-secondary: "Interstate Black Comp", sans-serif;
 }
 
 html,
