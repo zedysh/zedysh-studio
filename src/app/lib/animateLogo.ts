@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 
-export default function animateLogo() {
+export function animateLogo() {
   const canvas = document.getElementById("threejs") as HTMLCanvasElement | null;
   if (!canvas) return;
 
