@@ -52,7 +52,7 @@ export function animateLogo() {
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
-    
+
     let scaleMultiplier = MathUtils.inverseLerp(0, 1.6, camera.aspect);
     scaleMultiplier = Math.min(1, scaleMultiplier);
 
