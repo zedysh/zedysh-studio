@@ -37,17 +37,10 @@ export default function Projects() {
       <div className={style.projectsGrid}>
         {filteredProjects.map((project) => (
           <div key={project.title} className={style.projectCard}>
-            {/* <Image
-              src={project.image}
-              alt={project.title}
-              className={style.projectImage}
-              width={400}
-              height={300}
-            /> */}
-            <video src="/orelsan.mp4" className={style.projectImage} autoPlay loop muted />
+            <video src="/orelsan.mp4" className={style.projectVideo} autoPlay loop muted />
 
-            <div className={style.shadowGradient} />
-
+            {/* <div className={style.shadowGradient} /> */}
+            {/* 
             <div className={style.content}>
               {
                 // if hovered, show description
@@ -79,7 +72,7 @@ export default function Projects() {
                   </a>
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>

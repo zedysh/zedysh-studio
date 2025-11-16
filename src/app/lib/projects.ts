@@ -8,7 +8,7 @@ export const projects: {
   link?: string;
 }[] = [
   {
-    title: "Elton John's Pinball Game",
+    title: "Elton John - Pinball",
     image: "/projects/1.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.",
@@ -16,7 +16,7 @@ export const projects: {
     link: "https://dmi.umgapps.com/eltonjohn/pinball",
   },
   {
-    title: "Imagine Dragons 'Loom' Campaign",
+    title: "Imagine Dragons - Hub",
     image: "/projects/2.jpg",
     description:
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -24,7 +24,7 @@ export const projects: {
     link: "https://enter.imaginedragonsmusic.com/",
   },
   {
-    title: "Ella Fitzgerald's Room Re-created in 3D",
+    title: "Ella Fitzgerald - 360° Render",
     image: "/projects/3.jpg",
     description:
       "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -39,7 +39,7 @@ export const projects: {
     tags: ["3D"],
   },
   {
-    title: "VCHA - 3D Fan Letters Globe",
+    title: "VCHA - Fan Letters Globe",
     image: "/projects/5.jpg",
     description:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",

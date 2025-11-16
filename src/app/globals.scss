@@ -17,6 +17,12 @@
   --font-secondary: "Interstate Black Comp", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -29,12 +35,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-mono);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
