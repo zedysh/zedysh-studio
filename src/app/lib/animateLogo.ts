@@ -81,23 +81,29 @@ export function animateLogo() {
         }
       });
 
-      // const animations = gltf.animations;
-      // if (animations && animations.length) {
-      //   const mixer = new THREE.AnimationMixer(logoGroup);
-      //   animations.forEach((clip) => {
-      //     const action = mixer.clipAction(clip);
-      //     action.play();
-      //   });
+      const animations = gltf.animations;
+      if (animations && animations.length) {
+        const mixer = new THREE.AnimationMixer(logoGroup);
+        animations.forEach((clip) => {
+          const action = mixer.clipAction(clip);
+          action.play();
+        });
 
-      //   // Update the mixer on each frame
-      //   const clock = new THREE.Clock();
-      //   const updateMixer = () => {
-      //     requestAnimationFrame(updateMixer);
-      //     const delta = clock.getDelta();
-      //     mixer.update(delta);
-      //   };
-      //   updateMixer();
-      // }
+        // Update the mixer on each frame
+        const updateAnimationTime = () => {
+          let pct = document.body.scrollTop / window.innerHeight;
+          pct *= 1.5;
+          pct = Math.min(1, Math.max(0, pct));
+
+          const prev = mixer.time;
+          const next = pct * animations[0].duration;
+          const time = THREE.MathUtils.damp(prev, next, 50, clock.getDelta());
+          mixer.setTime(time);
+
+          requestAnimationFrame(updateAnimationTime);
+        };
+        updateAnimationTime();
+      }
 
       box3 = new THREE.Box3().setFromObject(logoGroup);
       const center = box3.getCenter(new THREE.Vector3());
@@ -120,19 +126,10 @@ export function animateLogo() {
 
   window.addEventListener("mousemove", handleMouseMove);
 
-  function update(scrollProgress: number, deltaTime: number) {
-    /** multiply progress to duration of first animation because duration of all animations are same */
-    // mixer.setTime(scrollProgress * gltf.animations[0].duration);
-  }
-
   // three clock
   const clock = new THREE.Clock();
-  // delta
-  const delta = clock.getDelta();
 
   // mixer.setTime(scrollProgress.current * gltf.animations[0].duration);
-
-  update(Math.min(0.99, Math.max(0, scrollProgress.current)), delta);
 
   const animate = () => {
     const delta = clock.getDelta();
