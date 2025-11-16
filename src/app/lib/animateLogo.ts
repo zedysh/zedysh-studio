@@ -52,12 +52,16 @@ export function animateLogo() {
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
+    
+    let scaleMultiplier = MathUtils.inverseLerp(0, 1.6, camera.aspect);
+    scaleMultiplier = Math.min(1, scaleMultiplier);
+
     const f = 0.8; // fraction of viewport height occupied before applying baseScale
     logoGroup.position.divideScalar(-logoGroup.scale.x);
     const dynamicViewportScale =
       (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * Math.abs(camera.position.z) * 2 * f) /
       logoSize.y;
-    logoGroup.scale.setScalar(baseScale * dynamicViewportScale);
+    logoGroup.scale.setScalar(baseScale * dynamicViewportScale * scaleMultiplier);
     logoGroup.position.multiplyScalar(-logoGroup.scale.x);
   };
 
