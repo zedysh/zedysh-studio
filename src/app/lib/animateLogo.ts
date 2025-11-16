@@ -79,7 +79,7 @@ export function animateLogo() {
       const animations = gltf.animations;
       if (animations && animations.length) {
         mixer = new THREE.AnimationMixer(logoGroup);
-        animLength = animations[0].duration
+        animLength = animations[0].duration;
         animations.forEach((clip) => {
           const action = mixer.clipAction(clip);
           action.play();
@@ -100,7 +100,6 @@ export function animateLogo() {
   );
 
   const animate = () => {
-
     if (mixer) {
       let pct = document.body.scrollTop / window.innerHeight;
       pct = MathUtils.clamp(pct * 1.5, 0, 1);
@@ -150,7 +149,7 @@ export function animateLogo() {
       composer.passes.forEach((p) => {
         if (p.dispose) p.dispose();
       });
-    } catch { }
+    } catch {}
     renderer.dispose();
   };
 }
