@@ -2,10 +2,18 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { MathUtils } from "three";
 
 export function animateLogo() {
   const canvas = document.getElementById("threejs") as HTMLCanvasElement | null;
   if (!canvas) return;
+
+  let frameId: number;
+
+  const baseRotationY = -Math.PI / 2;
+  const baseScale = 0.7;
+  const rotationLerp = 0.1;
+  const clock = new THREE.Clock();
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setClearColor(0x000000, 0);
@@ -36,22 +44,9 @@ export function animateLogo() {
   // State containers
   const loader = new GLTFLoader();
   let logoGroup: THREE.Group | null = null;
-  let gltf: THREE.Object3D | null;
   let box3: THREE.Box3 | null = null;
   let logoSize: THREE.Vector3 | null = null;
   const mousePosition = new THREE.Vector2();
-
-  const handleMouseMove = (e: MouseEvent) => {
-    mousePosition.set(
-      (e.clientX / window.innerWidth) * 2 - 1,
-      (e.clientY / window.innerHeight) * -2 + 1
-    );
-  };
-
-  // Baseline rotation (requested): start turned 90deg around Y
-  const baseRotationY = -Math.PI / 2;
-
-  const baseScale = 0.7; // requested base scale
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
@@ -62,11 +57,6 @@ export function animateLogo() {
       logoSize.y;
     logoGroup.scale.setScalar(baseScale * dynamicViewportScale);
     logoGroup.position.multiplyScalar(-logoGroup.scale.x);
-  };
-
-  const scrollProgress: { previous: number; current: number } = {
-    previous: 0,
-    current: 0,
   };
 
   loader.load(
@@ -92,12 +82,11 @@ export function animateLogo() {
         // Update the mixer on each frame
         const updateAnimationTime = () => {
           let pct = document.body.scrollTop / window.innerHeight;
-          pct *= 1.5;
-          pct = Math.min(1, Math.max(0, pct));
+          pct = MathUtils.clamp(pct * 1.5, 0, 1);
 
           const prev = mixer.time;
           const next = pct * animations[0].duration;
-          const time = THREE.MathUtils.damp(prev, next, 50, clock.getDelta());
+          const time = THREE.MathUtils.damp(prev, next, 100, clock.getDelta());
           mixer.setTime(time);
 
           requestAnimationFrame(updateAnimationTime);
@@ -118,30 +107,8 @@ export function animateLogo() {
     (err) => console.error("Failed to load /logo4.glb", err)
   );
 
-  // Scroll-controlled animation (damped; normalized to total scrollable height)
-  let frameId: number;
-  const rotationLerp = 0.1;
-
-  // const mixer = new THREE.AnimationMixer(gltf.scene);
-
-  window.addEventListener("mousemove", handleMouseMove);
-
-  // three clock
-  const clock = new THREE.Clock();
-
-  // mixer.setTime(scrollProgress.current * gltf.animations[0].duration);
-
   const animate = () => {
     const delta = clock.getDelta();
-
-    scrollProgress.previous = scrollProgress.current;
-    scrollProgress.current = THREE.MathUtils.damp(
-      scrollProgress.previous,
-      window.scrollY / window.innerHeight,
-      6,
-      delta
-    );
-
     frameId = requestAnimationFrame(animate);
 
     if (logoGroup) {
@@ -162,6 +129,15 @@ export function animateLogo() {
     composer.setSize(window.innerWidth, window.innerHeight);
     updateLogoScale();
   };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    mousePosition.set(
+      (e.clientX / window.innerWidth) * 2 - 1,
+      (e.clientY / window.innerHeight) * -2 + 1
+    );
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
   window.addEventListener("resize", handleResize);
 
   return () => {
@@ -173,7 +149,7 @@ export function animateLogo() {
       composer.passes.forEach((p) => {
         if (p.dispose) p.dispose();
       });
-    } catch {}
+    } catch { }
     renderer.dispose();
   };
 }
