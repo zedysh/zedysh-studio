@@ -102,7 +102,7 @@ export function animateLogo() {
       pct = MathUtils.clamp(pct * 1.5, 0, 1);
       const prev = mixer.time;
       const next = pct * animLength;
-      const time = THREE.MathUtils.damp(prev, next, 10, clock.getDelta());
+      const time = THREE.MathUtils.damp(prev, next, 5, clock.getDelta());
       mixer.setTime(time);
     }
 
