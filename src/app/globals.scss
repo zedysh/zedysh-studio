@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap");
+
 @font-face {
   font-family: "Interstate Black Comp";
   src: url("/fonts/Interstate-BlackComp.woff2") format("woff2"),
@@ -13,7 +15,7 @@
   --foreground: #ffffff;
   --violet: #7f00ff;
 
-  --font-mono: "Space Mono", monospace;
+  --font-primary: "Poppins", sans-serif;
   --font-secondary: "Interstate Black Comp", sans-serif;
 }
 
@@ -34,26 +36,5 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-mono);
-}
-
-a {
-  color: inherit;
-
-  text-decoration: underline;
-  text-transform: uppercase;
-  text-underline-offset: 0.25em;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-}
-
-li {
-  list-style: none;
-  line-height: 2em;
-  color: red;
+  font-family: var(--font-primary);
 }

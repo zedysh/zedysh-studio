@@ -1,13 +1,11 @@
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import style from "./Projects.module.scss";
 import { allTags } from "@/app/lib/tags";
 import { useState } from "react";
 import { TTag } from "@/app/lib/types";
 import { projects } from "@/app/lib/projects";
-import LabelsMarquee from "../../molecules/LabelsMarquee";
-import SocialIcons from "../../molecules/SocialIcons";
+import Title from "../../atoms/Title";
 
 export default function Projects() {
   const [filter, setFilter] = useState<TTag | "">("");
@@ -16,21 +14,19 @@ export default function Projects() {
   return (
     <div className={style.projects}>
       <div className={style.header}>
-        <div className={style.titleAndFilters}>
-          <h1>Projects</h1>
+        <Title text="Projects" />
 
-          <div className={style.filterBar}>
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                className={`${filter === tag ? style.activeFilter : ""} cursor-hover-effect`}
-                onClick={() => setFilter(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-            <button onClick={() => setFilter("")}>All</button>
-          </div>
+        <div className={style.filterBar}>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`${filter === tag ? style.activeFilter : ""} cursor-hover-effect`}
+              onClick={() => setFilter(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+          <button onClick={() => setFilter("")}>All</button>
         </div>
       </div>
 
@@ -39,13 +35,10 @@ export default function Projects() {
           <div key={project.title} className={style.projectCard}>
             <video src="/orelsan.mp4" className={style.projectVideo} autoPlay loop muted />
 
-            {/* <div className={style.shadowGradient} /> */}
-            {/* 
+            <div className={style.shadowGradient} />
+
             <div className={style.content}>
-              {
-                // if hovered, show description
-                <p className={style.projectDescription}>{project.description}</p>
-              }
+              {<p className={style.projectDescription}>{project.description}</p>}
 
               <div className={style.tagsRow}>
                 <div className={style.tags}>
@@ -72,7 +65,7 @@ export default function Projects() {
                   </a>
                 )}
               </div>
-            </div> */}
+            </div>
           </div>
         ))}
       </div>

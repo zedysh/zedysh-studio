@@ -1,0 +1,17 @@
+.title {
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+  font-size: 4em;
+
+  &.light {
+    color: var(--foreground);
+  }
+
+  &.dark {
+    color: var(--background);
+  }
+
+  @media (max-width: 900px) {
+    font-size: 3em;
+  }
+}
