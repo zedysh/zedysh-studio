@@ -1,9 +1,8 @@
-import Marquee from "react-fast-marquee";
-import style from "./LabelsMarquee.module.scss";
+import style from "./Labels.module.scss";
 import { musicLabels } from "@/app/lib/labels";
 import Title from "../../atoms/Title";
 
-export default function LabelsMarquee() {
+export default function Labels() {
   return (
     <div className={style.container}>
       <Title text="Clients" theme="dark" />

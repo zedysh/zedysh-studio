@@ -7,12 +7,15 @@ import Logo from "./components/atoms/Logo";
 import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
-import LabelsMarquee from "./components/molecules/LabelsMarquee";
+import Labels from "./components/molecules/Labels";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
+import logMadeByZedysh from "./lib/logMadeByZedyshStudio";
 
 export default function Landing() {
   useEffect(() => {
+    logMadeByZedysh();
+
     const dispose = animateLogo();
     return () => {
       if (typeof dispose === "function") dispose();
@@ -34,19 +37,15 @@ export default function Landing() {
         </div>
 
         <div className={style.footer}>
-          {/* <small>
-            Music Fan Engagement
-            <br />
-            & Audience Development
-            <br />
-            Digital Studio
-          </small>` */}
           <p className={style.logoText}>Zedysh Studio</p>
+
+          <p>We create interactive web experiences, web games, and more</p>
+
           <SocialIcons />
         </div>
       </div>
 
-      <LabelsMarquee />
+      <Labels />
 
       <Projects />
 
