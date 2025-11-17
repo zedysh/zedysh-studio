@@ -2,7 +2,7 @@ import Image from "next/image";
 import style from "./Logo.module.scss";
 
 const ratio = 2.5;
-const width = 75;
+const width = 100;
 const height = width / ratio;
 
 export default function Logo() {

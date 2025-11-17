@@ -1,6 +1,6 @@
 export default function logMadeByZedysh() {
   console.log(
-    "%cBuilt by Zedysh Studio",
+    "%cBuilt by Zedysh",
     `font-weight: bold;
     font-size: 14px; 
     text-transform: uppercase;

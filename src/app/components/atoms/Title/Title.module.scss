@@ -9,6 +9,7 @@
 
   &.dark {
     color: var(--background);
+    opacity: 0.75;
   }
 
   @media (max-width: 900px) {

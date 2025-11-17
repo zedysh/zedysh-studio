@@ -7,10 +7,10 @@ import Logo from "./components/atoms/Logo";
 import style from "./page.module.scss";
 import Projects from "./components/organisms/Projects";
 import SocialIcons from "./components/molecules/SocialIcons";
-import Labels from "./components/molecules/Labels";
+import LabelsAndArtists from "./components/molecules/LabelsAndArtists";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
-import logMadeByZedysh from "./lib/logMadeByZedyshStudio";
+import logMadeByZedysh from "./lib/logMadeByZedysh";
 
 export default function Landing() {
   useEffect(() => {
@@ -32,20 +32,22 @@ export default function Landing() {
 
           <a href="mailto:studio@zedysh.com" className={`${style.emailButton} cursor-hover-effect`}>
             <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
-            Email Us
+            Project in Mind?
           </a>
         </div>
 
         <div className={style.footer}>
           <p className={style.logoText}>Zedysh Studio</p>
 
-          <p>We create interactive web experiences, web games, and more</p>
+          <p className={style.description}>
+            We create interactive web experiences, websites and games.
+          </p>
 
           <SocialIcons />
         </div>
       </div>
 
-      <Labels />
+      <LabelsAndArtists />
 
       <Projects />
 

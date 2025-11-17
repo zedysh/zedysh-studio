@@ -5,6 +5,11 @@ export interface ILabel {
   image: string;
 }
 
+export interface IArtist {
+  name: string;
+  image: string;
+}
+
 export type TSocialIcon =
   | "linkedin"
   | "github"

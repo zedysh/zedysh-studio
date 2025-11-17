@@ -1,5 +1,5 @@
 .container {
-  padding: 2em 0;
+  padding: 1em;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: center;
   background-color: var(--foreground);
+
+  min-height: 100svh;
 
   .labels {
     display: flex;
@@ -27,5 +29,22 @@
         max-width: 3.5em;
       }
     }
+  }
+}
+
+.artists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  width: 100%;
+  max-width: 70em;
+
+  span {
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: var(--background);
+    opacity: 0.75;
   }
 }

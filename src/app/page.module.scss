@@ -12,17 +12,18 @@
   align-items: center;
   gap: 0.75em;
   background: none;
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
   padding: 0.75em 1.5em;
   font-size: 1em;
   font-family: inherit;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  border-radius: 4em;
 
   &:hover {
-    border-radius: 0;
+    background-color: var(--foreground);
+    color: var(--background);
   }
 
   .emailIcon {
@@ -92,6 +93,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.description {
+  text-align: center;
+  width: 100%;
+  max-width: 20em;
+  opacity: 0.9;
+  color: #ffffff;
 }
 
 .headerContent {
