@@ -40,7 +40,7 @@ export default function Landing() {
           <p className={style.logoText}>Zedysh Studio</p>
 
           <p className={style.description}>
-            We create interactive web experiences, websites and games.
+            We create interactive web experiences, websites and games for music industry.
           </p>
 
           <SocialIcons />

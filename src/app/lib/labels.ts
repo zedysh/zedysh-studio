@@ -2,23 +2,31 @@ import { ILabel } from "./types";
 
 export const musicLabels: ILabel[] = [
   {
-    title: "Def Jam Recordings",
-    image: "/labels/defjam.png",
+    title: "Verve Records",
+    image: "/labels/verve.jpg",
   },
   {
-    title: "Sony Music Entertainment",
-    image: "/labels/sony.png",
+    title: "Def Jam Recordings",
+    image: "/labels/defjam.jpg",
+  },
+  {
+    title: "RCA",
+    image: "/labels/rca.jpg",
   },
   {
     title: "Universal Music Group",
-    image: "/labels/umg.png",
+    image: "/labels/universal.jpg",
+  },
+  {
+    title: "Sony Music Entertainment",
+    image: "/labels/sony.jpg",
   },
   {
     title: "Interscope Records",
-    image: "/labels/interscope.png",
+    image: "/labels/interscope.jpg",
   },
   {
-    title: "Verve Records",
-    image: "/labels/verve.png",
+    title: "Century Media Records",
+    image: "/labels/century-media.jpg",
   },
 ];

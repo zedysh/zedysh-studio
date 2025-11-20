@@ -14,7 +14,7 @@ export default function Projects() {
   return (
     <div className={style.projects}>
       <div className={style.header}>
-        <Title text="Projects" />
+        <Title text="Projects" theme="light" />
 
         <div className={style.filterBar}>
           {allTags.map((tag) => (

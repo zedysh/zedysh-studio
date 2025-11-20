@@ -8,8 +8,7 @@
   }
 
   &.dark {
-    color: var(--background);
-    opacity: 0.75;
+    color: var(--theme-color-1);
   }
 
   @media (max-width: 900px) {
