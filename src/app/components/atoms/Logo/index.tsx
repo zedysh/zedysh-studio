@@ -1,5 +1,4 @@
 import Image from "next/image";
-import style from "./Logo.module.scss";
 
 const ratio = 2.5;
 const width = 100;
