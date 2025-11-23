@@ -15,8 +15,7 @@ export function animateLogo() {
   const rotationLerp = 0.1;
   const clock = new THREE.Clock();
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setClearColor(0x000000, 0);
+  const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -38,7 +37,7 @@ export function animateLogo() {
 
   // Assets
   const texLoader = new THREE.TextureLoader();
-  const matcap = texLoader.load("/matcap2.jpg");
+  const matcap = texLoader.load("/matcap.jpg");
   matcap.colorSpace = THREE.SRGBColorSpace;
 
   // State containers
@@ -70,6 +69,7 @@ export function animateLogo() {
     (gltf) => {
       logoGroup = gltf.scene;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
+
       logoGroup.traverse((obj) => {
         if ((obj as THREE.Mesh).isMesh) {
           (obj as THREE.Mesh).material = matcapMaterial;
@@ -96,7 +96,7 @@ export function animateLogo() {
       scene.add(logoGroup);
     },
     undefined,
-    (err) => console.error("Failed to load /logo4.glb", err)
+    (err) => console.error("Failed to load /logo.glb", err)
   );
 
   const animate = () => {
