@@ -10,8 +10,8 @@ export function animateLogo() {
 
   let frameId: number;
 
-  const baseRotationY = -Math.PI / 2;
-  const baseScale = 0.7;
+  const baseRotationY = 0;
+  const baseScale = 1;
   const rotationLerp = 0.1;
   const clock = new THREE.Clock();
 
@@ -66,7 +66,7 @@ export function animateLogo() {
   };
 
   loader.load(
-    "/logo.glb",
+    "/logo2.glb",
     (gltf) => {
       logoGroup = gltf.scene;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
