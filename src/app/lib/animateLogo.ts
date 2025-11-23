@@ -11,7 +11,7 @@ export function animateLogo() {
   let frameId: number;
 
   const baseRotationY = -Math.PI / 2;
-  const baseScale = 0.7;
+  const baseScale = 0.725;
   const rotationLerp = 0.1;
   const clock = new THREE.Clock();
 
