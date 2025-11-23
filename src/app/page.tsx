@@ -11,6 +11,7 @@ import LabelsAndArtists from "./components/molecules/LabelsAndArtists";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
 import logMadeByZedysh from "./lib/logMadeByZedysh";
+import LoadingScreen from "./components/molecules/LoadingScreen";
 
 export default function Landing() {
   useEffect(() => {
@@ -25,6 +26,8 @@ export default function Landing() {
   return (
     <div className={style.page}>
       <canvas id="threejs" className={style.threejsCanvas} />
+
+      {/* <LoadingScreen /> */}
 
       <div id="landing-content" className={style.content}>
         <div className={style.headerContent}>

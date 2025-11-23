@@ -38,7 +38,7 @@ export function animateLogo() {
 
   // Assets
   const texLoader = new THREE.TextureLoader();
-  const matcap = texLoader.load("/matcap.jpg");
+  const matcap = texLoader.load("/matcap2.jpg");
   matcap.colorSpace = THREE.SRGBColorSpace;
 
   // State containers
