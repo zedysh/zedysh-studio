@@ -28,6 +28,7 @@
 
   .emailIcon {
     font-size: 1.2em;
+    width: 1em;
   }
 }
 
@@ -56,6 +57,7 @@
   font-family: var(--font-secondary);
   font-weight: regular;
   font-size: 1.5em;
+  margin-right: auto;
 }
 
 .section {
@@ -90,9 +92,9 @@
 
 .footer {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
 }
 
 .description {
@@ -104,6 +106,7 @@
   color: var(--foreground);
   font-family: monospace;
   text-transform: uppercase;
+  margin: 0 auto;
 }
 
 .headerContent {
@@ -139,8 +142,7 @@
 }
 
 .socials {
-  display: flex;
-  justify-content: space-between;
+  margin-left: auto;
 }
 
 .artistsSection {

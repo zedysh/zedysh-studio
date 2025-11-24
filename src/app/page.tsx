@@ -12,8 +12,11 @@ import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
 import logMadeByZedysh from "./lib/logMadeByZedysh";
 import LoadingScreen from "./components/molecules/LoadingScreen";
+import * as THREE from "three";
 
 export default function Landing() {
+  const loadingManager = new THREE.LoadingManager();
+
   useEffect(() => {
     logMadeByZedysh();
 
@@ -46,7 +49,9 @@ export default function Landing() {
             We create interactive web experiences, websites and games for music industry.
           </p>
 
-          <SocialIcons />
+          <div className={style.socials}>
+            <SocialIcons />
+          </div>
         </div>
       </div>
 
