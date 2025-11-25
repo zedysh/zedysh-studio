@@ -37,21 +37,12 @@ export default function Landing() {
           <Logo />
 
           <a href="mailto:studio@zedysh.com" className={`${style.emailButton} cursor-hover-effect`}>
-            <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
-            Project in Mind?
+            GET IN TOUCH
           </a>
         </div>
 
         <div className={style.footer}>
-          <p className={style.logoText}>Zedysh Studio</p>
-
-          <p className={style.description}>
-            We create interactive web experiences, websites and games for music industry.
-          </p>
-
-          <div className={style.socials}>
-            <SocialIcons />
-          </div>
+          <SocialIcons />
         </div>
       </div>
 
