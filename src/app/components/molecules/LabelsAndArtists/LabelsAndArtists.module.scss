@@ -10,16 +10,15 @@
 
   min-height: 100svh;
 
-  .labels {
+  .marquee {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 4em;
+    gap: 5em;
 
     img {
-      width: 100%;
-      max-width: 8em;
+      height: 100%;
+      max-height: 12em;
+      padding: 0 4em;
+
       user-select: none;
       pointer-events: none;
     }
