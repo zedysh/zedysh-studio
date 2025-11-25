@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { MathUtils } from "three";
@@ -11,7 +12,7 @@ export function animateLogo() {
   let frameId: number;
 
   const baseRotationY = -Math.PI / 2;
-  const baseScale = 0.725;
+  const baseScale = 0.6;
   const rotationLerp = 0.1;
   const clock = new THREE.Clock();
 
@@ -40,6 +41,29 @@ export function animateLogo() {
   const matcap = texLoader.load("/matcap.jpg");
   matcap.colorSpace = THREE.SRGBColorSpace;
 
+  // PMREM for physically-based env map (used for reflections/transmission)
+  const pmremGenerator = new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileEquirectangularShader();
+  let envMap: THREE.Texture | null = null;
+  // Load HDR equirectangular and convert to cubemap irradiance
+  const rgbeLoader = new RGBELoader();
+  rgbeLoader.setDataType(THREE.UnsignedByteType);
+  rgbeLoader.load(
+    "/sky.hdr",
+    (texture) => {
+      const exrCube = pmremGenerator.fromEquirectangular(texture).texture;
+      scene.environment = exrCube;
+      envMap = exrCube;
+      texture.dispose();
+      pmremGenerator.dispose();
+    },
+    undefined,
+    (err) => {
+      console.warn("Failed to load HDR environment (/sky.hdr)", err);
+      pmremGenerator.dispose();
+    }
+  );
+
   // State containers
   const loader = new GLTFLoader();
   let logoGroup: THREE.Group | null = null;
@@ -65,7 +89,7 @@ export function animateLogo() {
   };
 
   loader.load(
-    "/logo.glb",
+    "/test.glb",
     (gltf) => {
       logoGroup = gltf.scene;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
@@ -73,6 +97,39 @@ export function animateLogo() {
       logoGroup.traverse((obj) => {
         if ((obj as THREE.Mesh).isMesh) {
           (obj as THREE.Mesh).material = matcapMaterial;
+        }
+
+        if (obj.name === "RING") {
+          const ringMat = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            metalness: 0.0,
+            roughness: 0.1,
+            transmission: 0.9,
+            thickness: 0.5,
+            ior: 1.45,
+            reflectivity: 0.9,
+            envMapIntensity: 2.0,
+            transparent: true,
+            side: THREE.DoubleSide,
+            opacity: 0.75,
+          });
+
+          // If environment map already ready, assign it; otherwise rely on scene.environment
+          if (envMap) ringMat.envMap = envMap;
+          const mesh = obj as THREE.Mesh;
+          mesh.material = ringMat;
+          if (!Array.isArray(mesh.material)) {
+            (mesh.material as THREE.Material).needsUpdate = true;
+          }
+        }
+
+        if (obj.name === "TEXT") {
+          (obj as THREE.Mesh).material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            side: THREE.DoubleSide,
+            opacity: 0.75,
+          });
         }
       });
 
