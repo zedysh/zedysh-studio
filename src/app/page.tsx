@@ -48,7 +48,7 @@ export default function Landing() {
 
       <LabelsAndArtists />
 
-      <Projects />
+      {/* <Projects /> */}
 
       <Footer />
     </div>
