@@ -12,7 +12,7 @@ export function animateLogo() {
 
   const baseRotationY = -Math.PI / 2;
   const baseScale = 0.6;
-  const rotationLerp = 0.1;
+  const rotationLerp = 0.25;
   const clock = new THREE.Clock();
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -25,11 +25,11 @@ export function animateLogo() {
   renderer.toneMappingExposure = 1.0;
 
   const scene = new THREE.Scene();
-  scene.background = null;
+  scene.background = new THREE.Color(0x000000);
 
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 0, 2);
-  camera.lookAt(0, -0.05, 0);
+  camera.position.set(0, -0.1, 2);
+  camera.lookAt(0, 0, 0);
 
   const renderPass = new RenderPass(scene, camera);
   composer.addPass(renderPass);
@@ -51,6 +51,15 @@ export function animateLogo() {
   const mousePosition = new THREE.Vector2();
   let mixer: THREE.AnimationMixer;
   let animLength = 0;
+  let textDesktop: THREE.Object3D | null = null;
+  let textMobile: THREE.Object3D | null = null;
+
+  const updateTextVisibility = () => {
+    if (!textDesktop || !textMobile) return;
+    const isMobile = window.innerWidth < 768;
+    textDesktop.visible = !isMobile;
+    textMobile.visible = isMobile;
+  };
 
   const updateLogoScale = () => {
     if (!logoGroup || !logoSize) return;
@@ -58,7 +67,7 @@ export function animateLogo() {
     let scaleMultiplier = MathUtils.inverseLerp(0, 1.6, camera.aspect);
     scaleMultiplier = Math.min(1, scaleMultiplier);
 
-    const f = 0.8; // fraction of viewport height occupied before applying baseScale
+    const f = window.innerWidth < 768 ? 1.0 : 0.8; // fraction of viewport height occupied before applying baseScale
     logoGroup.position.divideScalar(-logoGroup.scale.x);
     const dynamicViewportScale =
       (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * Math.abs(camera.position.z) * 2 * f) /
@@ -68,7 +77,7 @@ export function animateLogo() {
   };
 
   loader.load(
-    "/logo.glb",
+    "/logo2.glb",
     (gltf) => {
       logoGroup = gltf.scene;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
@@ -87,10 +96,9 @@ export function animateLogo() {
             thickness: 0.5,
             ior: 1.45,
             reflectivity: 0.9,
-            // envMapIntensity: 2.0,
             transparent: true,
             side: THREE.DoubleSide,
-            opacity: 0.75,
+            opacity: 0.5,
           });
 
           // If environment map already ready, assign it; otherwise rely on scene.environment
@@ -102,14 +110,22 @@ export function animateLogo() {
           }
         }
 
+        const textMaterial = new THREE.MeshBasicMaterial({
+          color: 0xadadad,
+          transparent: true,
+          side: THREE.DoubleSide,
+          opacity: 1.0,
+          blending: THREE.AdditiveBlending,
+        });
+
         if (obj.name === "TEXT") {
-          (obj as THREE.Mesh).material = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            side: THREE.DoubleSide,
-            opacity: 0.75,
-            blending: THREE.AdditiveBlending,
-          });
+          textDesktop = obj;
+          (obj as THREE.Mesh).material = textMaterial;
+        }
+
+        if (obj.name === "TEXT_MOBILE") {
+          textMobile = obj;
+          (obj as THREE.Mesh).material = textMaterial;
         }
       });
 
@@ -129,6 +145,7 @@ export function animateLogo() {
       logoGroup.position.copy(center).negate();
 
       updateLogoScale();
+      updateTextVisibility();
       logoGroup.rotation.y = baseRotationY; // initial orientation
       scene.add(logoGroup);
     },
@@ -165,6 +182,7 @@ export function animateLogo() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
     updateLogoScale();
+    updateTextVisibility();
   };
 
   const handleMouseMove = (e: MouseEvent) => {

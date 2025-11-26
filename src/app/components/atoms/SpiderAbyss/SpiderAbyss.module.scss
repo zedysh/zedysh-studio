@@ -1,0 +1,15 @@
+.image {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 6em;
+  opacity: 0.75;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  // display: none;
+
+  @media (max-width: 900px) {
+    padding-right: var(--padding-x);
+  }
+}

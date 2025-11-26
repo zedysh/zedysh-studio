@@ -1,0 +1,21 @@
+.stats {
+  width: 100%;
+  display: flex;
+  gap: 5em;
+  font-size: 0.75em;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    gap: 2em;
+    font-size: 2.75vw;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-family: var(--font-mono);
+  color: var(--foreground);
+  text-transform: uppercase;
+}

@@ -9,6 +9,10 @@ import LabelsAndArtists from "./components/molecules/LabelsAndArtists";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
 import logMadeByZedysh from "./lib/logMadeByZedysh";
+import Stats from "./components/atoms/Stats";
+import SpiderAbyss from "./components/atoms/SpiderAbyss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function Landing() {
   useEffect(() => {
@@ -24,37 +28,27 @@ export default function Landing() {
     <div className={style.page}>
       <canvas id="threejs" className={style.threejsCanvas} />
 
-      <div id="landing-content" className={style.content}>
+      <SpiderAbyss />
+
+      <div className={style.content}>
         <div className={style.headerContent}>
           <Logo />
 
-          <a href="mailto:studio@zedysh.com" className={`${style.emailButton} cursor-hover-effect`}>
-            GET IN TOUCH
-          </a>
+          <button
+            onClick={() => window.open("mailto:studio@zedysh.com", "_blank")}
+            className={`${style.glowOnHover} cursor-hover-effect`}
+          >
+            <FontAwesomeIcon icon={faEnvelope} className={style.emailIcon} />
+            <span>GET IN TOUCH</span>
+          </button>
         </div>
 
         <div className={style.footer}>
-          <div className={style.stats}>
-            <div className={style.stat}>
-              <h3>[ 11 ]</h3>
-              <p>Labels</p>
-            </div>
+          <p className={style.mobileTitle}>
+            We create interactive web experiences, games and websites for music industry
+          </p>
 
-            <div className={style.stat}>
-              <h3>[ 58 ]</h3>
-              <p>Artists</p>
-            </div>
-
-            <div className={style.stat}>
-              <h3>[ 126 ]</h3>
-              <p>Projects</p>
-            </div>
-
-            <div className={style.stat}>
-              <h3>[ 8+ ]</h3>
-              <p>Years</p>
-            </div>
-          </div>
+          <Stats />
 
           <SocialIcons />
         </div>
