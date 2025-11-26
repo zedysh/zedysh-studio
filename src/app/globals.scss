@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@700&display=swap");
 
 @font-face {
   font-family: "Interstate Black Comp";
@@ -17,6 +19,7 @@
 
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Interstate Black Comp", sans-serif;
+  --font-mono: "Spline Sans Mono", monospace;
 }
 
 * {

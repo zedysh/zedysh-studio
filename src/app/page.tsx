@@ -1,22 +1,16 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./components/organisms/Footer";
 import Logo from "./components/atoms/Logo";
 import style from "./page.module.scss";
-import Projects from "./components/organisms/Projects";
+
 import SocialIcons from "./components/molecules/SocialIcons";
 import LabelsAndArtists from "./components/molecules/LabelsAndArtists";
 import { useEffect } from "react";
 import { animateLogo } from "./lib/animateLogo";
 import logMadeByZedysh from "./lib/logMadeByZedysh";
-import LoadingScreen from "./components/molecules/LoadingScreen";
-import * as THREE from "three";
 
 export default function Landing() {
-  const loadingManager = new THREE.LoadingManager();
-
   useEffect(() => {
     logMadeByZedysh();
 
@@ -30,8 +24,6 @@ export default function Landing() {
     <div className={style.page}>
       <canvas id="threejs" className={style.threejsCanvas} />
 
-      {/* <LoadingScreen /> */}
-
       <div id="landing-content" className={style.content}>
         <div className={style.headerContent}>
           <Logo />
@@ -42,6 +34,28 @@ export default function Landing() {
         </div>
 
         <div className={style.footer}>
+          <div className={style.stats}>
+            <div className={style.stat}>
+              <h3>[ 11 ]</h3>
+              <p>Labels</p>
+            </div>
+
+            <div className={style.stat}>
+              <h3>[ 58 ]</h3>
+              <p>Artists</p>
+            </div>
+
+            <div className={style.stat}>
+              <h3>[ 126 ]</h3>
+              <p>Projects</p>
+            </div>
+
+            <div className={style.stat}>
+              <h3>[ 8+ ]</h3>
+              <p>Years</p>
+            </div>
+          </div>
+
           <SocialIcons />
         </div>
       </div>

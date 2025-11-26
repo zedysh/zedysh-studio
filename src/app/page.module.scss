@@ -93,8 +93,24 @@
 .footer {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 2em;
   align-items: flex-end;
+}
+
+.stats {
+  width: 100%;
+  display: flex;
+  gap: 5em;
+  font-size: 0.75em;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  color: var(--foreground);
+  text-transform: uppercase;
 }
 
 .description {

@@ -29,7 +29,7 @@ export function animateLogo() {
 
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.set(0, 0, 2);
-  camera.lookAt(0, 0, 0);
+  camera.lookAt(0, -0.05, 0);
 
   const renderPass = new RenderPass(scene, camera);
   composer.addPass(renderPass);
@@ -68,7 +68,7 @@ export function animateLogo() {
   };
 
   loader.load(
-    "/test.glb",
+    "/logo.glb",
     (gltf) => {
       logoGroup = gltf.scene;
       const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap });
