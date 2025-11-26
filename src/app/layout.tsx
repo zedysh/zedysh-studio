@@ -9,6 +9,32 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icons/z-logo.svg",
   },
+  description: "Zedysh Studio - Creating Interactive Web Experiences and Games for Music Industry",
+  keywords: [
+    "Zedysh",
+    "Zedysh Studio",
+    "Creative Studio",
+    "Design Agency",
+    "Web Design",
+    "Web Development",
+    "Digital Agency",
+  ],
+  openGraph: {
+    title: "Zedysh Studio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Zedysh Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zedysh Studio",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
